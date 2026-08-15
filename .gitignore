@@ -1,3 +1,19 @@
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Bancos de dados locais (Flask/SQLAlchemy)
+instance/
+*.db
+*.sqlite3
+
+# Cache de testes
+.pytest_cache/
+
+# Config local de ferramentas de dev
+.claude/
