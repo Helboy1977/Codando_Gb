@@ -1,5 +1,6 @@
 # Gabriel Sandre — Portfólio
 
+![Tests](https://img.shields.io/github/actions/workflow/status/Helboy1977/Codando_Gb/tests.yml?branch=main&style=flat-square&label=tests)
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=flat-square&logo=flask&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-embedded-07405E?style=flat-square&logo=sqlite&logoColor=white)
@@ -37,11 +38,11 @@ Aplicação que analisa logs de autenticação SSH e gera alertas automáticos d
 Cronômetro Pomodoro com interface gráfica em Tkinter, alternando entre sessões de foco e pausas.
 
 - Pausa longa automática a cada 4 sessões de foco concluídas, com contador de sessões
-- Aviso sonoro ao final de cada etapa e controles para iniciar/pausar, reiniciar e pular
+- Lógica de estado separada da interface (`pomodoro_logic.py`), testada com pytest
 
-`Python` `Tkinter`
+`Python` `Tkinter` `pytest`
 
-→ [Ver código](./pomodoro_timer)
+→ [Ver código](./pomodoro_timer) · [Como rodar](./pomodoro_timer/README.md#como-rodar-localmente)
 
 ## 🛠️ Stack
 

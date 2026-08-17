@@ -1,17 +1,7 @@
 import tkinter as tk
-from tkinter import ttk
 import winsound
 
-FOCUS_MIN = 25
-SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 15
-SESSIONS_BEFORE_LONG_BREAK = 4
-
-MODES = {
-    "Foco": FOCUS_MIN,
-    "Pausa curta": SHORT_BREAK_MIN,
-    "Pausa longa": LONG_BREAK_MIN,
-}
+from pomodoro_logic import MODES, PomodoroState
 
 MODE_COLORS = {
     "Foco": "#e15554",
@@ -27,28 +17,25 @@ class PomodoroApp:
         self.root.geometry("360x420")
         self.root.resizable(False, False)
 
-        self.mode = "Foco"
-        self.completed_sessions = 0
-        self.remaining_seconds = MODES[self.mode] * 60
-        self.running = False
+        self.state = PomodoroState()
         self.after_id = None
 
         self.root.configure(bg="#1e1e1e")
 
         self.mode_label = tk.Label(
-            root, text=self.mode, font=("Segoe UI", 18, "bold"),
-            fg=MODE_COLORS[self.mode], bg="#1e1e1e",
+            root, text=self.state.mode, font=("Segoe UI", 18, "bold"),
+            fg=MODE_COLORS[self.state.mode], bg="#1e1e1e",
         )
         self.mode_label.pack(pady=(30, 10))
 
         self.time_label = tk.Label(
-            root, text=self._format_time(), font=("Segoe UI", 54, "bold"),
+            root, text=self.state.format_time(), font=("Segoe UI", 54, "bold"),
             fg="white", bg="#1e1e1e",
         )
         self.time_label.pack(pady=10)
 
         self.session_label = tk.Label(
-            root, text=self._session_text(), font=("Segoe UI", 11),
+            root, text=self.state.session_text(), font=("Segoe UI", 11),
             fg="#aaaaaa", bg="#1e1e1e",
         )
         self.session_label.pack(pady=(0, 20))
@@ -82,58 +69,45 @@ class PomodoroApp:
                 command=lambda n=name: self.set_mode(n),
             ).pack(side="left", padx=3)
 
-    def _format_time(self):
-        minutes, seconds = divmod(self.remaining_seconds, 60)
-        return f"{minutes:02d}:{seconds:02d}"
-
-    def _session_text(self):
-        return f"Sessões de foco concluídas: {self.completed_sessions}"
-
     def toggle_running(self):
-        self.running = not self.running
-        self.start_button.config(text="Pausar" if self.running else "Iniciar")
-        if self.running:
+        self.state.running = not self.state.running
+        self.start_button.config(text="Pausar" if self.state.running else "Iniciar")
+        if self.state.running:
             self._tick()
 
     def _tick(self):
-        if not self.running:
+        if not self.state.running:
             return
-        if self.remaining_seconds <= 0:
+        if self.state.tick():
             self._notify_end()
             self.advance_mode()
             return
-        self.time_label.config(text=self._format_time())
-        self.remaining_seconds -= 1
+        self.time_label.config(text=self.state.format_time())
         self.after_id = self.root.after(1000, self._tick)
 
     def _notify_end(self):
         winsound.MessageBeep(winsound.MB_ICONASTERISK)
 
     def set_mode(self, mode_name):
-        self.running = False
         if self.after_id:
             self.root.after_cancel(self.after_id)
-        self.mode = mode_name
-        self.remaining_seconds = MODES[mode_name] * 60
-        self.mode_label.config(text=mode_name, fg=MODE_COLORS[mode_name])
-        self.time_label.config(text=self._format_time())
-        self.start_button.config(text="Iniciar")
+        self.state.set_mode(mode_name)
+        self._refresh_widgets()
 
     def advance_mode(self):
-        if self.mode == "Foco":
-            self.completed_sessions += 1
-            self.session_label.config(text=self._session_text())
-            next_mode = (
-                "Pausa longa"
-                if self.completed_sessions % SESSIONS_BEFORE_LONG_BREAK == 0
-                else "Pausa curta"
-            )
-        else:
-            next_mode = "Foco"
-        self.set_mode(next_mode)
+        if self.after_id:
+            self.root.after_cancel(self.after_id)
+        self.state.advance()
+        self._refresh_widgets()
 
     def reset_timer(self):
-        self.set_mode(self.mode)
+        self.set_mode(self.state.mode)
+
+    def _refresh_widgets(self):
+        self.mode_label.config(text=self.state.mode, fg=MODE_COLORS[self.state.mode])
+        self.time_label.config(text=self.state.format_time())
+        self.session_label.config(text=self.state.session_text())
+        self.start_button.config(text="Iniciar")
 
 
 if __name__ == "__main__":
