@@ -107,6 +107,7 @@ def create_app(db_uri="sqlite:///security_monitor.db", log_path=None):
     return app
 
 
+app = create_app()
+
 if __name__ == "__main__":
-    app = create_app()
     app.run(debug=True, port=5001)

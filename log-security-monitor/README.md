@@ -75,6 +75,17 @@ Acesse `http://localhost:5001` e clique em "Analisar logs".
 pytest -q
 ```
 
+## Deploy
+
+O projeto já está pronto para deploy no [Render](https://render.com) (camada free):
+
+1. Crie uma conta no Render e conecte sua conta do GitHub
+2. **New +** → **Blueprint** → selecione o repositório `Codando_Gb` — o Render detecta o `render.yaml` automaticamente e já configura build/start command
+   - Alternativa manual: **New +** → **Web Service**, root directory `log-security-monitor`, build command `pip install -r requirements.txt`, start command `gunicorn app:app --bind 0.0.0.0:$PORT`
+3. Aguarde o build (1-2 min) e acesse a URL gerada
+
+> **Nota:** no plano free do Render, o disco é efêmero — o banco SQLite é recriado a cada deploy/restart. Basta clicar em "Analisar logs" uma vez após abrir a URL para popular os alertas de novo. Para persistência real entre restarts, seria necessário um banco gerenciado (ex: Render PostgreSQL free tier).
+
 ## Possíveis próximos passos
 
 - Suporte a upload de um arquivo de log próprio pela interface
