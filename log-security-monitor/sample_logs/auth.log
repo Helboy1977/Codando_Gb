@@ -1,0 +1,22 @@
+Aug 16 02:14:01 web01 sshd[1190]: Accepted password for gabriel from 198.51.100.20 port 51322 ssh2
+Aug 16 02:45:33 web01 sshd[1201]: Failed password for invalid user test from 45.33.12.9 port 40011 ssh2
+Aug 16 03:12:01 web01 sshd[2201]: Failed password for invalid user admin from 203.0.113.7 port 54321 ssh2
+Aug 16 03:12:14 web01 sshd[2202]: Failed password for invalid user admin from 203.0.113.7 port 54322 ssh2
+Aug 16 03:12:27 web01 sshd[2203]: Failed password for root from 203.0.113.7 port 54323 ssh2
+Aug 16 03:12:40 web01 sshd[2204]: Failed password for root from 203.0.113.7 port 54324 ssh2
+Aug 16 03:12:55 web01 sshd[2205]: Failed password for invalid user oracle from 203.0.113.7 port 54325 ssh2
+Aug 16 03:13:10 web01 sshd[2206]: Failed password for invalid user postgres from 203.0.113.7 port 54326 ssh2
+Aug 16 03:13:25 web01 sshd[2207]: Accepted password for root from 203.0.113.7 port 54327 ssh2
+Aug 16 06:01:12 web01 sshd[3105]: Failed password for invalid user guest from 198.51.100.55 port 33221 ssh2
+Aug 16 08:22:44 web01 sshd[3310]: Accepted password for deploy from 198.51.100.20 port 51890 ssh2
+Aug 16 09:00:00 web01 sudo: gabriel : TTY=pts/0 ; PWD=/home/gabriel ; USER=root ; COMMAND=/bin/systemctl restart nginx
+Aug 16 11:47:03 web01 sshd[4410]: Failed password for invalid user admin from 185.220.101.3 port 22011 ssh2
+Aug 16 14:05:19 web01 sshd[4501]: Failed password for backup from 198.51.100.77 port 40982 ssh2
+Aug 16 14:05:22 web01 sshd[4502]: Accepted password for backup from 198.51.100.77 port 40990 ssh2
+Aug 16 20:30:01 web01 sshd[5100]: Failed password for invalid user admin from 91.203.5.10 port 51002 ssh2
+Aug 16 20:30:15 web01 sshd[5101]: Failed password for invalid user admin from 91.203.5.10 port 51003 ssh2
+Aug 16 20:30:29 web01 sshd[5102]: Failed password for invalid user admin from 91.203.5.10 port 51004 ssh2
+Aug 16 20:30:44 web01 sshd[5103]: Failed password for invalid user admin from 91.203.5.10 port 51005 ssh2
+Aug 16 20:30:58 web01 sshd[5104]: Failed password for invalid user admin from 91.203.5.10 port 51006 ssh2
+Aug 16 20:31:12 web01 sshd[5105]: Failed password for invalid user admin from 91.203.5.10 port 51007 ssh2
+Aug 16 23:59:50 web01 sshd[6001]: Accepted password for gabriel from 198.51.100.20 port 52011 ssh2

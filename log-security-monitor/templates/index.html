@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monitor de Segurança de Logs</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🛡️ Monitor de Segurança de Logs</h1>
+      <p class="subtitle">Analisa logs de autenticação SSH em busca de força bruta, usuários inválidos e possíveis comprometimentos</p>
+    </header>
+
+    <main>
+      <section class="card actions-card">
+        <h2>Análise</h2>
+        <p class="hint">Analisa <code>sample_logs/auth.log</code> e recria os alertas a partir dele.</p>
+        <button id="analyze-btn">Analisar logs</button>
+        <button id="clear-btn" class="secondary">Limpar alertas</button>
+        <p id="analyze-status" class="status"></p>
+      </section>
+
+      <section class="card summary-card">
+        <h2>Resumo</h2>
+        <p class="total">Total de alertas: <span id="total-alerts">0</span></p>
+        <canvas id="severity-chart" width="240" height="240"></canvas>
+        <div class="top-ips">
+          <h3>IPs mais ativos</h3>
+          <ul id="top-ips-list"></ul>
+        </div>
+      </section>
+
+      <section class="card list-card">
+        <h2>Alertas</h2>
+        <div class="filter-row">
+          <label for="severity-filter">Filtrar por severidade</label>
+          <select id="severity-filter">
+            <option value="">Todas</option>
+            <option value="high">Alta</option>
+            <option value="medium">Média</option>
+            <option value="low">Baixa</option>
+          </select>
+        </div>
+        <table id="alert-table">
+          <thead>
+            <tr>
+              <th>Quando</th>
+              <th>Severidade</th>
+              <th>Tipo</th>
+              <th>IP de origem</th>
+              <th>Usuário</th>
+              <th>Mensagem</th>
+            </tr>
+          </thead>
+          <tbody id="alert-tbody"></tbody>
+        </table>
+        <p id="empty-state" class="empty-state">Nenhum alerta ainda. Clique em "Analisar logs".</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

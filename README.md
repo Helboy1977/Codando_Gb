@@ -20,6 +20,14 @@ Cronômeto Pomodoro com interface gráfica (Tkinter), alternando entre sessões 
 
 → [Ver projeto](./pomodoro_timer)
 
+### 🛡️ [Monitor de Segurança de Logs](./log-security-monitor)
+
+Analisa logs de autenticação SSH e gera alertas automáticos de força bruta, usuários inválidos e possíveis contas comprometidas, com dashboard web para visualização.
+
+`Python` `Flask` `SQLAlchemy` `JavaScript` `Chart.js` `pytest`
+
+→ [Ver projeto](./log-security-monitor)
+
 ## Sobre
 
 Em desenvolvimento — este repositório é atualizado conforme novos projetos são concluídos. Cada projeto tem seu próprio README com detalhes de funcionalidades, stack e instruções para rodar localmente.
