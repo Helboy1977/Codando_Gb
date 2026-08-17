@@ -1,11 +1,11 @@
 # Gabriel Sandre — Portfólio
 
-![Tests](https://img.shields.io/github/actions/workflow/status/Helboy1977/Codando_Gb/tests.yml?branch=main&style=flat-square&label=tests)
+![Tests](https://img.shields.io/github/actions/workflow/status/Gabriel-Sandre/Codando_Gb/tests.yml?branch=main&style=flat-square&label=tests)
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=flat-square&logo=flask&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-embedded-07405E?style=flat-square&logo=sqlite&logoColor=white)
-![License](https://img.shields.io/github/license/Helboy1977/Codando_Gb?style=flat-square)
-![Last commit](https://img.shields.io/github/last-commit/Helboy1977/Codando_Gb?style=flat-square)
+![License](https://img.shields.io/github/license/Gabriel-Sandre/Codando_Gb?style=flat-square)
+![Last commit](https://img.shields.io/github/last-commit/Gabriel-Sandre/Codando_Gb?style=flat-square)
 
 Repositório com projetos desenvolvidos para praticar e demonstrar habilidades em desenvolvimento web e programação, com foco em vagas de estágio em tecnologia. Cada projeto é funcional, testado e documentado individualmente.
 
@@ -54,5 +54,5 @@ Em desenvolvimento — este repositório é atualizado conforme novos projetos s
 
 ## 📫 Contato
 
-[![GitHub](https://img.shields.io/badge/GitHub-@Helboy1977-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Helboy1977)
+[![GitHub](https://img.shields.io/badge/GitHub-@Gabriel--Sandre-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Gabriel-Sandre)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Gabriel_Sandre-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sandregabriel/)
