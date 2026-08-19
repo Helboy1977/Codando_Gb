@@ -29,9 +29,9 @@ Aplicação que analisa logs de autenticação SSH e gera alertas automáticos d
 - Detecção de força bruta, usuários inválidos e possíveis contas comprometidas por análise de padrões e janela de tempo
 - Dashboard com resumo por severidade, ranking de IPs mais ativos e tabela de alertas filtrável
 
-`Python` `Flask` `SQLAlchemy` `JavaScript` `Chart.js` `pytest`
+`Python` `Flask` `SQLAlchemy` `JavaScript` `Chart.js` `pytest` `Render`
 
-→ [Ver código](./log-security-monitor) · [Como rodar](./log-security-monitor/README.md#como-rodar-localmente)
+→ **[▶️ Ver funcionando](https://log-security-monitor.onrender.com)** · [Ver código](./log-security-monitor) · [Como rodar](./log-security-monitor/README.md#como-rodar-localmente)
 
 ### ⏱️ [Pomodoro Timer](./pomodoro_timer)
 

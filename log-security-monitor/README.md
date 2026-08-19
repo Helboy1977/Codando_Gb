@@ -1,6 +1,10 @@
 # 🛡️ Monitor de Segurança de Logs
 
+**▶️ Aplicação no ar: [log-security-monitor.onrender.com](https://log-security-monitor.onrender.com)**
+
 Aplicação web que analisa logs de autenticação SSH (estilo `auth.log` do Linux) e gera alertas de segurança automaticamente, destacando possíveis ataques de força bruta, tentativas com usuários inválidos e contas possivelmente comprometidas.
+
+> A aplicação está hospedada no plano gratuito do Render, que desliga o serviço após um período sem uso. O primeiro acesso pode levar cerca de 15 segundos até a aplicação subir; os seguintes são imediatos. Se a tabela estiver vazia, clique em **Analisar logs** para processar o arquivo de exemplo.
 
 ## Funcionalidades
 
@@ -77,14 +81,26 @@ pytest -q
 
 ## Deploy
 
-O projeto já está pronto para deploy no [Render](https://render.com) (camada free):
+A aplicação está publicada no [Render](https://render.com), camada gratuita, em
+**[log-security-monitor.onrender.com](https://log-security-monitor.onrender.com)**.
+Cada alteração enviada para a branch `main` dispara um novo deploy automaticamente.
 
-1. Crie uma conta no Render e conecte sua conta do GitHub
-2. **New +** → **Blueprint** → selecione o repositório `Codando_Gb` — o Render detecta o `render.yaml` automaticamente e já configura build/start command
-   - Alternativa manual: **New +** → **Web Service**, root directory `log-security-monitor`, build command `pip install -r requirements.txt`, start command `gunicorn app:app --bind 0.0.0.0:$PORT`
-3. Aguarde o build (1-2 min) e acesse a URL gerada
+Configuração usada:
 
-> **Nota:** no plano free do Render, o disco é efêmero — o banco SQLite é recriado a cada deploy/restart. Basta clicar em "Analisar logs" uma vez após abrir a URL para popular os alertas de novo. Para persistência real entre restarts, seria necessário um banco gerenciado (ex: Render PostgreSQL free tier).
+| Item | Valor |
+|---|---|
+| Tipo de serviço | Web Service |
+| Root directory | `log-security-monitor` |
+| Build command | `pip install -r requirements.txt` |
+| Start command | `gunicorn app:app --bind 0.0.0.0:$PORT` |
+
+O `gunicorn` substitui o servidor de desenvolvimento do Flask, que não é adequado para produção — ele atende uma requisição por vez e não foi escrito para exposição direta na internet.
+
+### Duas limitações do plano gratuito, e o que fazer a respeito
+
+**O disco é efêmero.** O banco SQLite é recriado a cada deploy ou reinício, então os alertas somem. Basta clicar em "Analisar logs" para repopular. Resolver isso de verdade exigiria um banco gerenciado à parte — o próprio Render oferece PostgreSQL, e a troca seria apenas na variável de conexão, já que a aplicação usa SQLAlchemy.
+
+**O serviço hiberna.** Após um período sem tráfego o Render desliga o processo, e a requisição seguinte precisa aguardar a aplicação subir de novo — cerca de 15 segundos. Acessos posteriores são imediatos.
 
 ## Possíveis próximos passos
 
